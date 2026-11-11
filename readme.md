@@ -53,6 +53,6 @@ python monitor_promocoes_telegram.py --gerar-sessao
 3. Adicione as variáveis de ambiente listadas na tabela acima (`API_ID`, `API_HASH`, `STRING_SESSION`, `BOT_TOKEN` e `MEU_CHAT_ID`).
 4. Cadastre a URL pública gerada pelo Render em um monitor HTTP(s) gratuito no [UptimeRobot](https://uptimerobot.com/) com intervalo de 5 minutos para manter a instância ativa 24/7.
 
-## 🛠️ Personalização de Filtros
+## Personalização de Filtros
 
 Para adicionar, editar ou remover categorias e palavras-chave monitoradas, basta editar o dicionário `PADROES_INTERESSE` dentro de `monitor_promocoes_telegram.py` e realizar o commit no GitHub — o [Render](https://render.com/docs/deploys) atualizará o serviço automaticamente.
