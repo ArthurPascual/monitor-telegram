@@ -1,10 +1,10 @@
-# 💻 Monitor de Promoções no Telegram — Notebook Gamer
+# Monitor de Promoções no Telegram — Notebook Gamer
 
 Automação em Python que monitora grupos e canais de ofertas no Telegram em tempo real e envia alertas instantâneos via Bot sempre que surge uma promoção de **Notebook Gamer** ou modelos com placa de vídeo dedicada (`RTX` / `GTX`).
 
 O projeto foi desenhado para permitir que você mantenha todos os grupos de anúncio silenciados no Telegram e receba notificações no celular apenas quando aparecer uma oferta do seu interesse, rodando 24h por dia gratuitamente na nuvem.
 
-## ⚙️ Arquitetura e Funcionamento
+## Arquitetura e Funcionamento
 
 Como usuários comuns não têm permissão de administrador para adicionar bots dentro de canais de ofertas de terceiros, este projeto combina duas frentes oficiais do Telegram:
 
@@ -13,14 +13,14 @@ Como usuários comuns não têm permissão de administrador para adicionar bots 
 3. **Disparo de Alerta ([Telegram Bot API](https://core.telegram.org/bots/tutorial)):** Envia a oferta formatada em HTML — com o nome do canal e o link direto para a mensagem original — através de um bot particular criado no `@BotFather`.
 4. **Servidor HTTP Keep-Alive Embutido:** Inclui um servidor web leve (`http.server`) em segundo plano na porta definida pela variável `PORT` (padrão `8080`) para responder a verificações de integridade do [UptimeRobot](https://uptimerobot.com/), impedindo que o serviço gratuito no [Render](https://render.com/docs/free) entre em hibernação após 15 minutos de inatividade.
 
-## 📂 Estrutura do Repositório
+## Estrutura do Repositório
 
 | Arquivo | Descrição |
 | :--- | :--- |
 | `monitor_promocoes_telegram.py` | Script principal contendo o gerador de `StringSession`, o motor de filtragem via Regex, o cliente Telethon e o servidor HTTP Keep-Alive |
 | `requirements.txt` | Declaração da única dependência externa do projeto (`telethon`) |
 
-## 🔐 Variáveis de Ambiente
+## Variáveis de Ambiente
 
 Para executar o projeto no [Render](https://render.com/docs/free) (ou em qualquer plataforma de nuvem), configure as seguintes variáveis em **Environment Variables**:
 
@@ -33,7 +33,7 @@ Para executar o projeto no [Render](https://render.com/docs/free) (ou em qualque
 | `MEU_CHAT_ID` | Recomendado | ID numérico da sua conta do Telegram que receberá os alertas do bot |
 | `CHATS_MONITORADOS` | Opcional | Lista de usernames ou IDs de grupos específicos separados por vírgula (se vazio, monitora todos os grupos e canais da conta) |
 
-## 🚀 Como Executar e Fazer Deploy
+## Como Executar e Fazer Deploy
 
 ### 1. Gerar a sessão localmente (apenas na primeira vez)
 
