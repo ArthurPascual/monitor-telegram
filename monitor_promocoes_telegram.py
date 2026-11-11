@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Monitor de Promoções no Telegram (GTA 6, Gift Cards & Notebook Gamer)
----------------------------------------------------------------------
+Monitor de Promoções no Telegram (Notebook Gamer)
+-------------------------------------------------
 Este script conecta à sua conta do Telegram via Telethon (StringSession),
 monitora grupos/canais de promoções em tempo real e envia alertas imediatos
 através de um Bot próprio (para tocar notificação no celular mesmo com os
@@ -54,19 +54,9 @@ MEU_CHAT_ID = os.getenv("MEU_CHAT_ID", "").strip()
 CHATS_FILTRO_RAW = os.getenv("CHATS_MONITORADOS", "").strip()
 
 # =====================================================================
-# 2. REGRAS DE FILTRAGEM (GTA 6, GIFT CARDS E NOTEBOOK GAMER)
+# 2. REGRAS DE FILTRAGEM (APENAS NOTEBOOK GAMER E AFINS)
 # =====================================================================
 PADROES_INTERESSE = {
-    "GTA 6": re.compile(
-        r"\b(gta\s*6|gta\s*vi|grand\s+theft\s+auto\s*(6|vi))\b",
-        re.IGNORECASE,
-    ),
-    "Gift Card / Cartão Presente": re.compile(
-        r"\b(gift\s*-?\s*cards?|cart[aã]o\s*-?\s*presente|cart[oõ]es\s*-?\s*presente|"
-        r"gift\s+(psn|playstation|xbox|steam|nintendo|nuuvem|eshop)|"
-        r"saldo\s+(psn|playstation|xbox|steam|nintendo))\b",
-        re.IGNORECASE,
-    ),
     "Notebook Gamer": re.compile(
         r"\b(notebooks?\s+gamer|notes?\s+gamer|laptops?\s+gamer|"
         r"acer\s+nitro|nitro\s+v15|nitro\s+5|predator\s+helios|"
@@ -146,7 +136,7 @@ class HealthCheckHandler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/plain; charset=utf-8")
         self.end_headers()
         self.wfile.write(
-            b"OK - Monitor de Promocoes ativo (GTA 6, Gift Cards & Notebook Gamer)"
+            b"OK - Monitor de Promocoes ativo (Notebook Gamer)"
         )
 
     def log_message(self, format, *args):
@@ -246,8 +236,7 @@ async def iniciar_monitoramento():
     me = await client.get_me()
     escopo = f"grupos específicos ({chats_alvo})" if chats_alvo else "TODOS os grupos e canais"
     logger.info(
-        f"Conectado como {me.first_name}. Monitorando {escopo} para "
-        "GTA 6, Gift Cards e Notebook Gamer..."
+        f"Conectado como {me.first_name}. Monitorando {escopo} para Notebook Gamer..."
     )
     await client.run_until_disconnected()
 
